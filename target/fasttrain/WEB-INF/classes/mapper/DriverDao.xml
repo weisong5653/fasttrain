@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DriverDao">
+    <insert id="addDriver">
+        insert into driver(id,phone,platenumber,cartype,color,proof_identity,orders,grade) values (
+        #{driver.id},
+        #{driver.phone},
+        #{driver.plateNumber},
+        #{driver.carType},
+        #{driver.color},
+        #{driver.proofIdentity},
+        #{driver.orders},
+        #{driver.grade}
+        )
+    </insert>
+    <update id="updateDriver">
+        update driver set
+        grade = #{driver.grade},
+        orders = orders+1
+        where id = #{driver.id}
+    </update>
+</mapper>

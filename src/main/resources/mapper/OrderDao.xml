@@ -1,0 +1,46 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrderDao">
+    <resultMap id="Order" type="entity.Order"></resultMap>
+
+
+    <insert id="addOrder">
+        insert into `order`(id,passenger_id,driver_id,createtime,endtime,evalution,score,state) values (
+        #{order.id},
+        #{order.passengerId},
+        #{order.driverId},
+        #{order.createTime},
+        #{order.endTime},
+        #{order.evalution},
+        #{order.score},
+        #{order.state}
+        )
+    </insert>
+
+    <update id="updateState">
+        update `order` set state = #{state} where id = #{id}
+    </update>
+    <update id="updateScore">
+        update `order` set score = #{score} where id = #{id}
+    </update>
+    <update id="updateEvalution">
+        update `order` set evalution = #{evalution} where id = #{id}
+    </update>
+
+    <update id="updateOrder">
+        update `order` set
+        driver_id = #{order.driverId},
+        evalution = #{order.evalution},
+        state = #{order.state},
+        score = #{order.score},
+        passenger_id = #{order.passengerId},
+        createtime = #{order.createTime},
+        endtime = #{order.endTime}
+        where id = #{order.id}
+    </update>
+    
+    <select id="listOreders" resultMap="Order">
+        select id,passenger_id,createtime,state from `order` where state = #{state} order by createtime desc
+    </select>
+</mapper>

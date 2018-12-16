@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PassengerDao">
+    <insert id="addPassenger">
+        insert into passenger(id,name,phone,sex,evalution) values (
+        #{passenger.id},
+        #{passenger.name},
+        #{passenger.phone},
+        #{passenger.sex},
+        #{passenger.evalution}
+        )
+    </insert>
+</mapper>
